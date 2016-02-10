@@ -1,0 +1,40 @@
+<h1>Calls made</h1>
+<p>URL: {{url}}, PORT: {{port}}</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Call</th>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+    </thead>
+    <tbody style="border-top-style: solid; border-top-color: black;">
+        {{#each calls}}
+        <tr>
+            <td>{{time}}</td>
+            <td>{{operation}}</td>
+            <td>
+                <table class="table table-condensed table-bordered">
+                    {{#each input}}
+                    <tr>
+                        <td>{{@key}}</td>
+                        <td>{{this}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </td>
+            <td>
+                <table class="table table-condensed table-bordered">
+                    {{#each output}}
+                    <tr>
+                        <td>{{@key}}</td>
+                        <td>{{this}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

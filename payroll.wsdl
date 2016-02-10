@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/payroll/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="payroll" targetNamespace="http://www.example.org/payroll/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/payroll/" elementFormDefault="qualified">
+      <xsd:element name="getVacationDaysLeft">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="firstName" type="xsd:string" />
+          	<xsd:element name="lastName" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getVacationDaysLeftResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="daysLeft" type="xsd:int" />
+          	<xsd:element name="daysLeftInclApproved"
+          		type="xsd:int">
+          	</xsd:element>
+          	<xsd:element name="flextimeTaken" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitAbsence">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="firstName" type="xsd:string"></xsd:element>
+      			<xsd:element name="lastName" type="xsd:string"></xsd:element>
+      			<xsd:element name="from" type="xsd:date"></xsd:element>
+      			<xsd:element name="to" type="xsd:date"></xsd:element>
+      			<xsd:element name="type" type="xsd:string"></xsd:element>
+      			<xsd:element name="duration" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitAbsenceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="result" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getVacationDaysLeftRequest">
+    <wsdl:part element="tns:getVacationDaysLeft" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getVacationDaysLeftResponse">
+    <wsdl:part element="tns:getVacationDaysLeftResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="submitAbsenceRequest">
+  	<wsdl:part name="parameters" element="tns:submitAbsence"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitAbsenceResponse">
+  	<wsdl:part name="parameters" element="tns:submitAbsenceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="payroll">
+    <wsdl:operation name="getVacationDaysLeft">
+      <wsdl:input message="tns:getVacationDaysLeftRequest"/>
+      <wsdl:output message="tns:getVacationDaysLeftResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitAbsence">
+    	<wsdl:input message="tns:submitAbsenceRequest"></wsdl:input>
+    	<wsdl:output message="tns:submitAbsenceResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="payrollSOAP" type="tns:payroll">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="getVacationDaysLeft">
+  		<soap:operation
+  			soapAction="http://www.example.org/payroll/getVacationDaysLeft" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="submitAbsence">
+  		<soap:operation
+  			soapAction="http://www.example.org/payroll/submitAbsence" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="payroll">
+    <wsdl:port binding="tns:payrollSOAP" name="payrollSOAP">
+      <soap:address location="http://localhost:8080/payroll"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
