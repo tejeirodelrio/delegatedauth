@@ -13,6 +13,8 @@ Check this doc: https://help.salesforce.com/HTViewHelpDoc?id=sso_delauthenticati
 
 To run this example with your own Salesforce org, you need to contact Salesforce to enable delegated authentication single sign-on.
 
+##Clone locally and run Heroku
+
 Assumes you have configured your local environment with the [Heroku Toolbelt](https://toolbelt.heroku.com/)
 
 Open a terminal window and start typing... (output of each command ommitted)
@@ -22,20 +24,16 @@ Open a terminal window and start typing... (output of each command ommitted)
     heroku login
     heroku create
     git push heroku master
-    
-##Run Heroku
-
-    cd delegatedauth
     heroku scale web=1
     heroku logs --tail
     
-#OR
+##OR: Use the simple Deploy to Heroku button
 
 Here is a friendly Heroku button. It will create into Heroku for you.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-#OR
+##OR: Use the prebuilt service
 Use this sample already deployed at https://delegatedauth.herokuapp.com/
 
 #How to use
