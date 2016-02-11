@@ -1,5 +1,5 @@
 # About delegatedauth
-A simple Node.js web application configured for [Heroku](www.heroku.com) that implements the **delegated authentication** SOAP web service from Salesforce.
+A simple Node.js web application configured for [Heroku](https://www.heroku.com/) that implements the **delegated authentication** SOAP web service from Salesforce.
 
 #What is Delegated Authentication?
 Single Sign On with Salesforce as the service provider requires an infrastructure with an identity provider that either implements standard interface using SAML (called Federated Authentication) or exposes the identity service using a SOAP based API - which is called Delegated Authentication. See this article to understand the concepts and how to implement your own identity provider.
