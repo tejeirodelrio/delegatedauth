@@ -4,9 +4,9 @@ A simple Node.js web application configured for [Heroku](https://www.heroku.com/
 #What is Delegated Authentication?
 Single Sign On with Salesforce as the service provider requires an infrastructure with an identity provider that either implements standard interface using SAML (called Federated Authentication) or exposes the identity service using a SOAP based API - which is called Delegated Authentication. See this article [Single Sign-On with SAML on Force.com] (https://developer.salesforce.com/page/Single_Sign-On_with_SAML_on_Force.com) to understand the concepts and how to implement your own identity provider.
 This sample covers the Delegated Authentication and implements a sample SOAP web service using Node.js technology.
-It can be easily deployed Heroku. Read the instructions below how to install and run the sample.
+It can be easily deployed to Heroku. Read the instructions below how to install and run the sample.
 
-The Salesfrorce documentation describes delegated authentication in more detail.
+The Salesforce documentation describes delegated authentication in more detail.
 Check this doc: [Configuring Salesforce for Delegated Authentication](https://help.salesforce.com/HTViewHelpDoc?id=sso_delauthentication_configuring.htm&language=en_US)
 
 #Installation
@@ -17,7 +17,7 @@ To run this example with your own Salesforce org, you need to contact Salesforce
 
 Assumes you have configured your local environment with the [Heroku Toolbelt](https://toolbelt.heroku.com/)
 
-Open a terminal window and start typing... (output of each command ommitted)
+Open a terminal window and start typing... (output of each command omitted)
 
     git clone https://github.com/tegeling/delegatedauth.git
     cd delegatedauth
