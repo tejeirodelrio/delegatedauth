@@ -2,12 +2,12 @@
 A simple Node.js web application configured for [Heroku](https://www.heroku.com/) that implements the **delegated authentication** SOAP web service from Salesforce.
 
 #What is Delegated Authentication?
-Single Sign On with Salesforce as the service provider requires an infrastructure with an identity provider that either implements standard interface using SAML (called Federated Authentication) or exposes the identity service using a SOAP based API - which is called Delegated Authentication. See this article to understand the concepts and how to implement your own identity provider.
+Single Sign On with Salesforce as the service provider requires an infrastructure with an identity provider that either implements standard interface using SAML (called Federated Authentication) or exposes the identity service using a SOAP based API - which is called Delegated Authentication. See this article [Single Sign-On with SAML on Force.com] (https://developer.salesforce.com/page/Single_Sign-On_with_SAML_on_Force.com) to understand the concepts and how to implement your own identity provider.
 This sample covers the Delegated Authentication and implements a sample SOAP web service using Node.js technology.
 It can be easily deployed Heroku. Read the instructions below how to install and run the sample.
 
 The Salesfrorce documentation describes delegated authentication in more detail.
-Check this doc: https://help.salesforce.com/HTViewHelpDoc?id=sso_delauthentication_configuring.htm&language=en_US
+Check this doc: [Configuring Salesforce for Delegated Authentication](https://help.salesforce.com/HTViewHelpDoc?id=sso_delauthentication_configuring.htm&language=en_US)
 
 #Installation
 
@@ -48,7 +48,7 @@ Your new web service has the following endpoint
 
     https://sheltered-dusk-90723.herokuapp.com/SforceAuthenticationService
     
-Use this URL or try the pre-deployed version at https://delegatedauth.herokuapp.com/SforceAuthenticationService
+Use this URL or try the pre-deployed version at `https://delegatedauth.herokuapp.com/SforceAuthenticationService`
 
 #How it works
 The login logic of this sample service is very easy. As long as username and password are equal the service returns with true and the login is successful. Otherwise the service returns false and the login fails.
