@@ -1,48 +1,31 @@
-# delegatedauth
-Sample web service that implements the delegated authentication interface for SSO with Salesforce
+# About delegatedauth
+A simple Node.js web application configured for [Heroku](www.heroku.com) that implements the **delegated authentication** SOAP web service from Salesforce.
 
-#Tomcat Template
+#What is Delegated Authentication?
+Single Sign On with Salesforce as the service provider requires an infrastructure with an identity provider that either implements standard interface using SAML (called Federated Authentication) or exposes the identity service using a SOAP based API - which is called Delegated Authentication. See this article to understand the concepts and how to implement your own identity provider.
+This sample covers the Delegated Authentication and implements a sample SOAP web service using Node.js technology.
+It can be easily deployed Heroku. Read the instructions below how to install and run the sample.
 
-A simple Node.js web application configured for [Heroku](www.heroku.com) that implements the delegated authorization Web Service from Salesforce.
+The Salesfrorce documentation describes delegated authentication in more detail.
+Check this doc: https://help.salesforce.com/HTViewHelpDoc?id=sso_delauthentication_configuring.htm&language=en_US
 
-#Installation -
+#Installation
+
+To run this example with your own Salesforce org, you need to contact Salesforce to enable delegated authentication single sign-on.
 
 Assumes you have configured your local environment with the [Heroku Toolbelt](https://toolbelt.heroku.com/)
 
 Open a terminal window and start typing... (output of each command ommitted)
 
-    cd OAuthTemplate
-    git remote -rm origin 
-    mvn package
-    java -jar target/dependency/webapp-runner.jar target/*.war
+    git clone https://github.com/tegeling/delegatedauth.git
+    cd delegatedauth
+    heroku login
     heroku create
-    heroku addons:create memcachier:dev
     git push heroku master
-    heroku scale web=1
-
-##Run locally
-
-Run locally from the commandline with
-
-    mvn package
-    java -jar target/dependency/webapp-runner.jar --session-store memcache target/*.war
-
-Or (my favourite)
-Run directly from Eclipse 
-
-- Run->External Tools->External Tool Configurations
-- Add new program
-- Set Location to your java executible (for my mac os x this was at /usr/bin/java)
-- Set Working directory to your project root
-- Set arguments to -jar target/dependency/webapp-runner.jar --session-store memcache target/documenter.war
-- Go the environment tab and set the three memcachier envrionment passwords from Heroku.
-
-Something slightly broken with the Memcache stuff when running locally, not sure what yet. 
-Run in eclipse without the --session-store attribute if this bothers you
-
+    
 ##Run Heroku
 
-	cd documenter 
+    cd delegatedauth
     heroku scale web=1
     heroku logs --tail
     
@@ -51,3 +34,5 @@ Run in eclipse without the --session-store attribute if this bothers you
 Here is a friendly Heroku button.. It will create into Heroku for you, but the redirect_uri OAuth parameter is still configured as a servlet init param, so will need some intervetion before this works
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+#How to use
