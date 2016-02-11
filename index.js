@@ -40,7 +40,6 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
     res.render('index', {calls: calls, url: url, port: port});
-    //res.render('index', {calls: _.filter(calls, {operation: 'getVacationDaysLeft'})});
 });
 
 function wrapService(service) {
