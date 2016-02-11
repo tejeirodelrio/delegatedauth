@@ -31,8 +31,50 @@ Open a terminal window and start typing... (output of each command ommitted)
     
 #OR
 
-Here is a friendly Heroku button.. It will create into Heroku for you, but the redirect_uri OAuth parameter is still configured as a servlet init param, so will need some intervetion before this works
+Here is a friendly Heroku button. It will create into Heroku for you.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+#OR
+Use this sample already deployed at https://delegatedauth.herokuapp.com/
+
 #How to use
+Once your Salesforce org has Delegated Authentication enabled, all you need to do is enter the URL of your new web service in the Delegated Gateway URL text box.
+Remember the Heroku application name and the URL - in this example *sheltered-dusk-90723*:
+
+    $ heroku create
+    Creating app... done, stack is cedar-14
+    https://sheltered-dusk-90723.herokuapp.com/ | https://git.heroku.com/sheltered-dusk-90723.git
+
+Your new web service has the following endpoint 
+
+    https://sheltered-dusk-90723.herokuapp.com/SforceAuthenticationService
+    
+Use this URL or try the pre-deployed version at https://delegatedauth.herokuapp.com/SforceAuthenticationService
+
+#How it works
+The login logic of this sample service is very easy. As long as username and password are equal the service returns with true and the login is successful. Otherwise the service returns false and the login fails.
+To validate the results you can easily check the logs by opening the Heroku app homepage and see the log table including call details.
+
+Sample SOAP request envelope:
+```
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:authentication.soap.sforce.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:Authenticate>
+         <urn:username>tegeling@salesforce.com</urn:username>
+         <urn:password>tegeling@salesforce.com</urn:password>
+      </urn:Authenticate>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+Sample SOAP response envelope:
+```
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:authentication.soap.sforce.com">
+   <soap:Body>
+      <AuthenticateResult xmlns="urn:authentication.soap.sforce.com">
+         <Authenticated>true</Authenticated>
+      </AuthenticateResult>
+   </soap:Body>
+</soap:Envelope>
+```
